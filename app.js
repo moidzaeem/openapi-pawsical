@@ -52,7 +52,7 @@ apiRouter.post('/generate-lyrics', async (req, res) => {
     // need to call suno api
 
     if (generatedContent) {
-        const sunoResponse = await axios.post('http://localhost:3001/api/custom_generate', {
+        const sunoResponse = await axios.post(`${process.env.SUNO_API_URL}/custom_generate`, {
             make_instrumental: false,
             prompt: generatedContent,
             wait_audio: false
