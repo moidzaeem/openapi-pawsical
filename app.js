@@ -1,10 +1,11 @@
 const express = require('express');
+require('dotenv').config()
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const axios = require('axios'); // Ensure axios is imported for making HTTP requests.
 const { OpenAI } = require('openai'); // Use destructuring to get OpenAI class
 const openai = new OpenAI({
-    apiKey: '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', // make sure to set your OpenAI API key
+    apiKey: process.env.OPEN_API_SECRET_KEY, // make sure to set your OpenAI API key
 });
 app.use(express.json()); // Middleware for parsing JSON request bodies
 
@@ -20,7 +21,7 @@ apiRouter.get('/', (req, res) => {
 apiRouter.post('/generate-lyrics', async (req, res) => {
     const data = req.body;
     const run = await openai.beta.threads.createAndRun({
-        assistant_id: "asst_o3R0qELTTNhuzZM4soEqdFnk",
+        assistant_id: process.env.OPEN_API_ASSISTANCE_ID,
         thread: {
             messages: [
                 {
