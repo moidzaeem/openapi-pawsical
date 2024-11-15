@@ -26,7 +26,7 @@ apiRouter.post('/generate-lyrics', async (req, res) => {
             messages: [
                 {
                     role: "user",
-                    content: `Name is ${data.pet_name}, Pet Type: ${data.pet_type}, Gender: ${data.pet_gender},Color: ${data.pet_color}
+                    content: `Name is ${data.pet_name}, Pet Type: ${data.pet_type},
                 Description:${data.description}.
                 `},
             ],
